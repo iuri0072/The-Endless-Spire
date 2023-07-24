@@ -1178,7 +1178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1239897682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,7 +1196,7 @@ MonoBehaviour:
     m_Extent: {x: 0.5, y: 0.5, z: 0}
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   _detectorCount: 3
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
