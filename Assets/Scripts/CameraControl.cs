@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     private GameObject gameManager;
+    public GameObject backgroundGroup;
     public Transform player;
     private Transform lookAt;
     public bool mapStatic = true;
@@ -21,6 +22,7 @@ public class CameraControl : MonoBehaviour
         if(lookAt.tag == "Player" && !mapStatic)
         {
             Vector3 delta = Vector3.zero;
+            
             float deltaX = lookAt.position.x - transform.position.x;
             float deltaY = lookAt.position.y - transform.position.y;
 
