@@ -8,6 +8,7 @@ public class LevelGeneration : MonoBehaviour
     public GameObject[] rooms; // index 0 --> LR, index 1 --> LRB, index 2 --> LRT, index 3 --> LRBT
     public GameObject player;
     public GameObject mainCamera;
+    public GameObject door;
 
     private int direction;
     public float moveAmountX;
@@ -31,9 +32,11 @@ public class LevelGeneration : MonoBehaviour
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
         Instantiate(rooms[0], transform.position, Quaternion.identity);
-        //Instantiate(player, transform.position, Quaternion.identity);
-        player.transform.position = transform.position;
+        Instantiate(door, transform.position, Quaternion.identity);
+        player = (GameObject)Instantiate(player, transform.position, Quaternion.identity);
+        //player.transform.position = transform.position + new Vector3(1f, 0, 0);
 
+        mainCamera.GetComponent<CameraControl>().player = player.transform;
         mainCamera.GetComponent<CameraControl>().updateLookAt(player.transform);
 
         stopGeneration = false;
@@ -129,6 +132,7 @@ public class LevelGeneration : MonoBehaviour
             }
             else //stop generation
             {
+                Instantiate(door, transform.position, Quaternion.identity);
                 stopGeneration = true;
             }
         }

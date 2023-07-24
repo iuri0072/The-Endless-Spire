@@ -18,7 +18,7 @@ public class CameraControl : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(lookAt.name == "Player" && !mapStatic)
+        if(lookAt.tag == "Player" && !mapStatic)
         {
             Vector3 delta = Vector3.zero;
             float deltaX = lookAt.position.x - transform.position.x;
