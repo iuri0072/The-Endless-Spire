@@ -3634,6 +3634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  mainCamera: {fileID: 2008573369820259049, guid: a5f02fa169dadc24a80e10f3e6bb82b9, type: 3}
 --- !u!61 &-7315406003378714428
 BoxCollider2D:
   m_ObjectHideFlags: 0

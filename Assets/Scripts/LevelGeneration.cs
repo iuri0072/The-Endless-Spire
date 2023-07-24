@@ -6,6 +6,8 @@ public class LevelGeneration : MonoBehaviour
 {
     public Transform[] startingPositions;
     public GameObject[] rooms; // index 0 --> LR, index 1 --> LRB, index 2 --> LRT, index 3 --> LRBT
+    public GameObject player;
+    public GameObject mainCamera;
 
     private int direction;
     public float moveAmountX;
@@ -22,11 +24,17 @@ public class LevelGeneration : MonoBehaviour
     public LayerMask room;
     private int upCounter;
 
+    
+
     private void Start()
     {
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
         Instantiate(rooms[0], transform.position, Quaternion.identity);
+        //Instantiate(player, transform.position, Quaternion.identity);
+        player.transform.position = transform.position;
+
+        mainCamera.GetComponent<CameraControl>().updateLookAt(player.transform);
 
         stopGeneration = false;
         direction = Random.Range(1, 6);
