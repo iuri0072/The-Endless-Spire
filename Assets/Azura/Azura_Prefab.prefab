@@ -2232,7 +2232,7 @@ GameObject:
   - component: {fileID: 5664746735167774849}
   - component: {fileID: 5303298565078387237}
   - component: {fileID: 5943923617467787788}
-  - component: {fileID: 420163543240138820}
+  - component: {fileID: 8561918120455867729}
   m_Layer: 0
   m_Name: Azura_Prefab
   m_TagString: Player
@@ -2345,7 +2345,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &420163543240138820
+--- !u!114 &8561918120455867729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2365,7 +2365,7 @@ MonoBehaviour:
   _wallCheckSize: {x: 0.5, y: 1}
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
 --- !u!1 &5441999570387998846
 GameObject:
   m_ObjectHideFlags: 0
