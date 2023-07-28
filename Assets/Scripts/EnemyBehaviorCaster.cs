@@ -97,7 +97,7 @@ public class EnemyBehaviorCaster : MonoBehaviour
                 ResetSpriteDirection();
                 lastState = State.statePatrol;
             }
-            anim.SetTrigger("Patrol");
+            anim.SetTrigger("Wizard_Walk");
             return State.statePatrol;
         }
 
