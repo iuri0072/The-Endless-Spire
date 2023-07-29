@@ -678,7 +678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1251463094469517787}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ladder Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}

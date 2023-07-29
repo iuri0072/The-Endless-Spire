@@ -241,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1614719134670371088}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 5 Blocks-Mini
   m_TagString: Untagged
   m_Icon: {fileID: 0}

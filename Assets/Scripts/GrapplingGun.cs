@@ -7,7 +7,7 @@ public class GrapplingGun : MonoBehaviour
 
     [Header("Layers Settings:")]
     [SerializeField] private bool grappleToAll = false;
-    [SerializeField] private int grappableLayerNumber = 9;
+    [SerializeField] private int grappableLayerNumber = 6;
 
     [Header("Main Camera:")]
     public Camera m_camera;
@@ -59,7 +59,7 @@ public class GrapplingGun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("Setting Grapple Point");
+            //Debug.Log("Setting Grapple Point");
             SetGrapplePoint();
         }
         else if (Input.GetKey(KeyCode.Mouse0))
@@ -127,8 +127,13 @@ public class GrapplingGun : MonoBehaviour
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                     grappleRope.enabled = true;
                 }
+                else { Debug.Log("Hit Point distances and firepoint distance are not within max distance range."); }
+            }
+            else { Debug.Log("Layer of hit is " + _hit.transform.gameObject.layer);
+                Debug.DrawRay(firePoint.position, distanceVector.normalized,Color.red,30);
             }
         }
+        else { Debug.Log("Raycast did not collide with anything"); }
     }
 
     public void Grapple()

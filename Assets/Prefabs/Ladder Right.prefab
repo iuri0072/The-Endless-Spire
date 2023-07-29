@@ -1625,7 +1625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2729071025840353272}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ladder Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
