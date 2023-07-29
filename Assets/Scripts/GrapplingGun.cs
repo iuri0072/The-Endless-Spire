@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GrapplingGun : MonoBehaviour
@@ -12,7 +10,7 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] private int grappableLayerNumber = 9;
 
     [Header("Main Camera:")]
-    private Camera m_camera;
+    public Camera m_camera;
 
     [Header("Transform Ref:")]
     public Transform gunHolder;
@@ -54,9 +52,7 @@ public class GrapplingGun : MonoBehaviour
     {
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
-
-        m_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-
+        m_camera = Camera.main;
     }
 
     private void Update()
@@ -181,4 +177,5 @@ public class GrapplingGun : MonoBehaviour
             Gizmos.DrawWireSphere(firePoint.position, maxDistnace);
         }
     }
+
 }
