@@ -59,6 +59,7 @@ public class GrapplingGun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            Debug.Log("Setting Grapple Point");
             SetGrapplePoint();
         }
         else if (Input.GetKey(KeyCode.Mouse0))
@@ -121,6 +122,7 @@ public class GrapplingGun : MonoBehaviour
             {
                 if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                 {
+                    Debug.Log("Raycast Successful, layer is grappable");
                     grapplePoint = _hit.point;
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                     grappleRope.enabled = true;
@@ -159,6 +161,7 @@ public class GrapplingGun : MonoBehaviour
 
                     m_springJoint2D.distance = distanceVector.magnitude;
                     m_springJoint2D.frequency = launchSpeed;
+                    Debug.Log("SpringJoin Enabled Here");
                     m_springJoint2D.enabled = true;
                     break;
                 case LaunchType.Transform_Launch:

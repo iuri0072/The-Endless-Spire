@@ -61,14 +61,18 @@ public class GrapplingRope : MonoBehaviour
 
     void DrawRope()
     {
+        //Debug.Log("Made it into the DrawRope() function.");
         if (!strightLine)
         {
-            if (m_lineRenderer.GetPosition(percision - 1).x == grapplingGun.grapplePoint.x)
+            //Debug.Log("Still drawing straight line.");
+            if (Mathf.Round(m_lineRenderer.GetPosition(percision - 1).x) == Mathf.Round(grapplingGun.grapplePoint.x))
             {
                 strightLine = true;
             }
             else
             {
+                //Debug.Log("Compare Line Render Position "+m_lineRenderer.GetPosition(percision - 1).x + "Grapple Point"+ grapplingGun.grapplePoint.x);
+
                 DrawRopeWaves();
             }
         }
@@ -76,6 +80,7 @@ public class GrapplingRope : MonoBehaviour
         {
             if (!isGrappling)
             {
+                Debug.Log("Made it to the grapple call function");
                 grapplingGun.Grapple();
                 isGrappling = true;
             }
