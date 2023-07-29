@@ -18,6 +18,8 @@ public class EnemyBehaviorWarrior : MonoBehaviour
     private Animator anim;
     private Transform currentPoint;
     private GameObject player;
+    private GameObject bodyCenter;
+
 
     private void Start()
     {
@@ -29,13 +31,17 @@ public class EnemyBehaviorWarrior : MonoBehaviour
         originalState = state;
         lastState = originalState;
 
+        bodyCenter = new GameObject("Body Center");
+        bodyCenter.transform.parent = transform;
+        bodyCenter.transform.localPosition = new Vector3(0, 1.5f, 0);
+
         pointA.transform.parent = null;
         pointB.transform.parent = null;
     }
 
     private void Update()
     {
-        if(VerifyState() == State.statePatrol)
+        if (VerifyState() == State.statePatrol)
         {
             Patrol();
         }
@@ -68,13 +74,13 @@ public class EnemyBehaviorWarrior : MonoBehaviour
         else
             rb.velocity = new Vector2(-speed, 0);
 
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
+        if (Vector2.Distance(bodyCenter.transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
         {
             Flip();
             currentPoint = pointA.transform;
         }
 
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
+        if (Vector2.Distance(bodyCenter.transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
         {
             Flip();
             currentPoint = pointB.transform;
@@ -83,12 +89,12 @@ public class EnemyBehaviorWarrior : MonoBehaviour
 
     private State VerifyState()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) > chaseDistance)
+        if (Vector2.Distance(bodyCenter.transform.position, player.transform.position) > chaseDistance)
         {
             if(lastState == State.stateChase)
             {
-                pointA.transform.position = new Vector2(transform.position.x - 4.5f, transform.position.y);
-                pointB.transform.position = new Vector2(transform.position.x + 4.5f, transform.position.y);
+                pointA.transform.position = new Vector2(transform.position.x - 4.5f, transform.position.y + 1.5f);
+                pointB.transform.position = new Vector2(transform.position.x + 4.5f, transform.position.y + 1.5f);
                 ResetSpriteDirection();
                 lastState = State.statePatrol;
             }
