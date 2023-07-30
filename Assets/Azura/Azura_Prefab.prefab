@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grappleRope: {fileID: 1175393347740154574}
-  grappleToAll: 1
+  grappleToAll: 0
   grappableLayerNumber: 6
   m_camera: {fileID: 0}
   gunHolder: {fileID: 6463491402019854756}

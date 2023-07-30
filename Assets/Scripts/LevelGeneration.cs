@@ -9,7 +9,7 @@ public class LevelGeneration : MonoBehaviour
     public GameObject player;
     public GameObject mainCamera;
     public GameObject door;
-
+    public BoxCollider2D[] allPositionColliders;
     private int direction;
     public float moveAmountX;
     public float moveAmountY;
@@ -22,6 +22,8 @@ public class LevelGeneration : MonoBehaviour
     public float startTimeBtwRoom = 0.25f;
 
     public bool stopGeneration;
+    public bool PoseCollidersRemoved;
+    public bool PoseColliderNotify = false;
     public LayerMask room;
     private int upCounter;
 
@@ -35,7 +37,6 @@ public class LevelGeneration : MonoBehaviour
         Instantiate(door, transform.position, Quaternion.identity);
         player = (GameObject)Instantiate(player, transform.position, Quaternion.identity);
         //player.transform.position = transform.position + new Vector3(1f, 0, 0);
-
         mainCamera.GetComponent<CameraControl>().player = player.transform;
         mainCamera.GetComponent<CameraControl>().updateLookAt(player.transform);
 
@@ -54,6 +55,16 @@ public class LevelGeneration : MonoBehaviour
         {
             timeBtwRoom -= Time.deltaTime;
         }
+        if(stopGeneration && !PoseCollidersRemoved)
+        {
+            DisablePoseColliders();
+            //Debug.Log("Removing Pose Colliders continues");
+        }
+        //if(PoseCollidersRemoved && !PoseColliderNotify)
+        //{
+        //    Debug.Log("All Colliders removed");
+        //    PoseColliderNotify = true;
+        //}
     }
 
     private void Move()
@@ -134,8 +145,42 @@ public class LevelGeneration : MonoBehaviour
             {
                 Instantiate(door, transform.position, Quaternion.identity);
                 stopGeneration = true;
+                //Debug.Log("All rooms generated");
             }
         }
 
+    }
+    private void DisablePoseColliders()
+    {
+        //foreach(BoxCollider2D posBox in allPositionColliders)
+        //{
+        //    Debug.Log("Disabling PosBox:" +posBox.name);
+        //    posBox.GetComponent<BoxCollider2D>().enabled = false;
+        //}
+        bool aPoseBoxStillEnabled = false;
+        GameObject[] PosBox = GameObject.FindGameObjectsWithTag("Pose");
+        foreach(GameObject pos in PosBox)
+        {
+            pos.GetComponent<BoxCollider2D>().enabled = false;
+            //Debug.Log(pos.name);
+
+        }
+        foreach (GameObject pos in PosBox)
+        {
+            if (pos.GetComponent<BoxCollider2D>().isActiveAndEnabled)
+            {
+                //Debug.Log(pos.name + " box collider is still enabled");
+                aPoseBoxStillEnabled = true;
+            }
+            else
+            {
+                //Debug.Log(pos.name + " box collider is not enabled");
+
+            }
+        }
+        if (!aPoseBoxStillEnabled)
+        {
+            PoseCollidersRemoved = true;
+        }
     }
 }
