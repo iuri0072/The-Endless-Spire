@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 	//Scriptable object which holds all the player's movement parameters. If you don't want to use it
 	//just paste in all the parameters, though you will need to manuly change all references in this script
 	public PlayerData Data;
-
+	public Animator anim;
 	#region COMPONENTS
     public Rigidbody2D RB { get; private set; }
 	//Script to handle all player animations, all references can be safely removed if you're importing into your own project.
@@ -85,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private void Start()
 	{
+		anim = GetComponent<Animator>();
 		SetGravityScale(Data.gravityScale);
 		IsFacingRight = true;
 	}
@@ -100,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
 		LastPressedJumpTime -= Time.deltaTime;
 		LastPressedDashTime -= Time.deltaTime;
 		#endregion
-
 		#region INPUT HANDLER
 		_moveInput.x = Input.GetAxisRaw("Horizontal");
 		_moveInput.y = Input.GetAxisRaw("Vertical");
@@ -159,7 +159,13 @@ public class PlayerMovement : MonoBehaviour
 			IsJumping = false;
 
 			_isJumpFalling = true;
-		}
+			anim.SetBool("isLanding", true);
+			anim.SetBool("isJumping", false);
+        }
+        else
+        {
+			anim.SetBool("isLanding", false);
+        }
 
 		if (IsWallJumping && Time.time - _wallJumpStartTime > Data.wallJumpTime)
 		{
@@ -179,6 +185,10 @@ public class PlayerMovement : MonoBehaviour
 			if (CanJump() && LastPressedJumpTime > 0)
 			{
 				IsJumping = true;
+				if (!anim.GetBool("isJumping"))
+				{
+					anim.SetBool("isJumping", true);
+				}
 				IsWallJumping = false;
 				_isJumpCut = false;
 				_isJumpFalling = false;
@@ -198,7 +208,14 @@ public class PlayerMovement : MonoBehaviour
 				_lastWallJumpDir = (LastOnWallRightTime > 0) ? -1 : 1;
 
 				WallJump(_lastWallJumpDir);
-			}
+            }
+            else
+            {
+				if (anim.GetBool("isJumping"))
+				{
+					anim.SetBool("isJumping", false);
+				}
+            }
 		}
 		#endregion
 
@@ -419,7 +436,7 @@ public class PlayerMovement : MonoBehaviour
 		float force = Data.jumpForce;
 		if (RB.velocity.y < 0)
 			force -= RB.velocity.y;
-
+		
 		RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
 		#endregion
 	}

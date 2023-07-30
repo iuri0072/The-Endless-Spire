@@ -80,7 +80,7 @@ public class GrapplingRope : MonoBehaviour
         {
             if (!isGrappling)
             {
-                Debug.Log("Made it to the grapple call function");
+                //Debug.Log("Made it to the grapple call function");
                 grapplingGun.Grapple();
                 isGrappling = true;
             }

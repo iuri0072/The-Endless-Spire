@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GrapplingGun : MonoBehaviour
 {
+    public Animator anim;
     [Header("Scripts Ref:")]
     public GrapplingRope grappleRope;
 
@@ -50,6 +51,7 @@ public class GrapplingGun : MonoBehaviour
 
     private void Start()
     {
+        anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
         m_camera = Camera.main;
@@ -86,6 +88,10 @@ public class GrapplingGun : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            if (anim.GetBool("isGrappling"))
+            {
+                anim.SetBool("isGrappling", false);
+            }
             grappleRope.enabled = false;
             m_springJoint2D.enabled = false;
             m_rigidbody.gravityScale = 1;
@@ -122,18 +128,24 @@ public class GrapplingGun : MonoBehaviour
             {
                 if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                 {
-                    Debug.Log("Raycast Successful, layer is grappable");
+                    //Debug.Log("Raycast Successful, layer is grappable");
                     grapplePoint = _hit.point;
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                     grappleRope.enabled = true;
+                    if (!anim.GetBool("isGrappling"))
+                    {
+                        anim.SetBool("isGrappling", true);
+                    }
                 }
-                else { Debug.Log("Hit Point distances and firepoint distance are not within max distance range."); }
+                else { //Debug.Log("Hit Point distances and firepoint distance are not within max distance range."); 
+                }
             }
-            else { Debug.Log("Layer of hit is " + _hit.transform.gameObject.layer);
-                Debug.DrawRay(firePoint.position, distanceVector.normalized,Color.red,30);
+            else { //Debug.Log("Layer of hit is " + _hit.transform.gameObject.layer);
+                //Debug.DrawRay(firePoint.position, distanceVector.normalized,Color.red,30);
             }
         }
-        else { Debug.Log("Raycast did not collide with anything"); }
+        else { //Debug.Log("Raycast did not collide with anything"); 
+        }
     }
 
     public void Grapple()
@@ -166,7 +178,7 @@ public class GrapplingGun : MonoBehaviour
 
                     m_springJoint2D.distance = distanceVector.magnitude;
                     m_springJoint2D.frequency = launchSpeed;
-                    Debug.Log("SpringJoin Enabled Here");
+                    //Debug.Log("SpringJoin Enabled Here");
                     m_springJoint2D.enabled = true;
                     break;
                 case LaunchType.Transform_Launch:

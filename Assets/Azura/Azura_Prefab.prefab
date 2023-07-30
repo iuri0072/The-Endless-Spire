@@ -2426,6 +2426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 107913b40cc007b47b24a212aaa033ad, type: 2}
+  anim: {fileID: 5664746735167774848}
   _groundCheckPoint: {fileID: 2726672543980415298}
   _groundCheckSize: {x: 1.11, y: 0.16}
   _frontWallCheckPoint: {fileID: 6528086362895712413}

@@ -23,9 +23,15 @@ public class EnemyBehaviorCaster : MonoBehaviour
     private GameObject bodyCenter;
     private float timer;
     public float timeBtwShots;
-
+    private void Awake()
+    {
+        pointA = new GameObject("PointA");
+        pointB = new GameObject("PointB");
+        ResetPatrolPointPositions();
+    }
     private void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         currentPoint = pointB.transform;
@@ -63,6 +69,20 @@ public class EnemyBehaviorCaster : MonoBehaviour
                 localScale.x = -Mathf.Abs(localScale.x);
             transform.localScale = localScale;
         }
+        if(Mathf.Round(pointA.transform.position.y) != Mathf.Round(this.transform.position.y + 1.5f))
+        {
+            //Debug.Log("Point A's Y Pos: " + pointA.transform.position.y + ", Enemy Y Pos: " + this.transform.position.y);
+            pointA.transform.position = new Vector2(transform.position.x - 4.5f, transform.position.y + 1.5f);
+        }
+        if (Mathf.Round(pointB.transform.position.y) != Mathf.Round(this.transform.position.y + 1.5f))
+        {
+            pointB.transform.position = new Vector2(transform.position.x + 4.5f, transform.position.y + 1.5f);
+        }
+        if (pointB.transform.position.x < transform.position.x || pointA.transform.position.x > transform.position.x)
+        {
+            //Debug.Log("Enemy is out of patrol range");
+            ResetPatrolPointPositions();
+        }
     }
 
     private void Attack()
@@ -98,8 +118,7 @@ public class EnemyBehaviorCaster : MonoBehaviour
         {
             if (lastState == State.stateAttack)
             {
-                pointA.transform.position = new Vector2(transform.position.x - 4.5f, transform.position.y + 1.5f);
-                pointB.transform.position = new Vector2(transform.position.x + 4.5f, transform.position.y + 1.5f);
+                ResetPatrolPointPositions();
                 ResetSpriteDirection();
                 lastState = State.statePatrol;
             }
@@ -126,14 +145,17 @@ public class EnemyBehaviorCaster : MonoBehaviour
         Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
         Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);
     }
-
+    private void ResetPatrolPointPositions()
+    {
+        pointA.transform.position = new Vector2(transform.position.x - 4.5f, transform.position.y + 1.5f);
+        pointB.transform.position = new Vector2(transform.position.x + 4.5f, transform.position.y + 1.5f);
+    }
     private void Flip()
     {
         Vector3 localScale = transform.localScale;
         localScale.x *= -1;
         transform.localScale = localScale;
     }
-
     private void ResetSpriteDirection()
     {
         currentPoint = pointB.transform;

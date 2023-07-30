@@ -20,7 +20,12 @@ public class EnemyBehaviorWarrior : MonoBehaviour
     private GameObject player;
     private GameObject bodyCenter;
 
-
+    private void Awake()
+    {
+        pointA = new GameObject("PointA");
+        pointB = new GameObject("PointB");
+        ResetPatrolPointPositions();
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -48,6 +53,20 @@ public class EnemyBehaviorWarrior : MonoBehaviour
         if(VerifyState() == State.stateChase)
         {
             Chase();
+        }
+        if (Mathf.Round(pointA.transform.position.y) != Mathf.Round(transform.position.y + 1.5f))
+        {
+            //Debug.Log("Point A's Y Pos: " + pointA.transform.position.y + ", Enemy Y Pos: " + this.transform.position.y);
+            pointA.transform.position = new Vector2(transform.position.x - 4.5f, transform.position.y + 1.5f);
+        }
+        if (Mathf.Round(pointB.transform.position.y) != Mathf.Round(transform.position.y + 1.5f))
+        {
+            pointB.transform.position = new Vector2(transform.position.x + 4.5f, transform.position.y + 1.5f);
+        }
+        if (pointB.transform.position.x < transform.position.x + .1f || pointA.transform.position.x > transform.position.x - .1f)
+        {
+            //Debug.Log("Enemy is out of patrol range");
+            ResetPatrolPointPositions();
         }
     }
 
@@ -93,8 +112,7 @@ public class EnemyBehaviorWarrior : MonoBehaviour
         {
             if(lastState == State.stateChase)
             {
-                pointA.transform.position = new Vector2(transform.position.x - 4.5f, transform.position.y + 1.5f);
-                pointB.transform.position = new Vector2(transform.position.x + 4.5f, transform.position.y + 1.5f);
+                ResetPatrolPointPositions();
                 ResetSpriteDirection();
                 lastState = State.statePatrol;
             }
@@ -125,7 +143,11 @@ public class EnemyBehaviorWarrior : MonoBehaviour
         localScale.x *= -1;
         transform.localScale = localScale;
     }
-
+    private void ResetPatrolPointPositions()
+    {
+        pointA.transform.position = new Vector2(transform.position.x - 4.5f, transform.position.y + 1.5f);
+        pointB.transform.position = new Vector2(transform.position.x + 4.5f, transform.position.y + 1.5f);
+    }
     private void ResetSpriteDirection()
     {
         currentPoint = pointB.transform;
