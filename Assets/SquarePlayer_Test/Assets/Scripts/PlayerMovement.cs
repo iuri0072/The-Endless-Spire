@@ -106,9 +106,15 @@ public class PlayerMovement : MonoBehaviour
 		_moveInput.y = Input.GetAxisRaw("Vertical");
 
 		if (_moveInput.x != 0)
+        {
 			CheckDirectionToFace(_moveInput.x > 0);
+			anim.SetBool("isWalking", true);
+		}
+		else
+			anim.SetBool("isWalking", false);
 
-		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
+
+		if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
         {
 			OnJumpInput();
         }
@@ -244,9 +250,17 @@ public class PlayerMovement : MonoBehaviour
 
 		#region SLIDE CHECKS
 		if (CanSlide() && ((LastOnWallLeftTime > 0 && _moveInput.x < 0) || (LastOnWallRightTime > 0 && _moveInput.x > 0)))
+        {
 			IsSliding = true;
+			//anim.SetBool("isDashing", true);
+		}
+			
 		else
+        {
 			IsSliding = false;
+			//anim.SetBool("isDashing", false);
+		}
+			
 		#endregion
 
 		#region GRAVITY
@@ -293,7 +307,16 @@ public class PlayerMovement : MonoBehaviour
 			SetGravityScale(0);
 		}
 		#endregion
-    }
+
+		#region ANIMATION
+
+		if (IsDashing)
+			anim.SetBool("isDashing", true);
+		else
+			anim.SetBool("isDashing", false);
+
+		#endregion
+	}
 
     private void FixedUpdate()
 	{
