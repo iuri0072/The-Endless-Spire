@@ -684,6 +684,7 @@ GameObject:
   - component: {fileID: 4900503192744116687}
   - component: {fileID: 5743839718342937527}
   - component: {fileID: 3040055761213927539}
+  - component: {fileID: -5504751225312249972}
   m_Layer: 10
   m_Name: Wizard_Prefab
   m_TagString: Enemy
@@ -820,6 +821,19 @@ MonoBehaviour:
   state: 0
   speed: 4
   timeBtwShots: 2
+--- !u!114 &-5504751225312249972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964749648483648206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dd5d5780c1c8a48a9c9f10bacfb43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &2040938341750059013
 GameObject:
   m_ObjectHideFlags: 0

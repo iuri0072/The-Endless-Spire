@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2766354043442290570}
   - component: {fileID: 9073044874662067422}
   - component: {fileID: 2159038985005373882}
+  - component: {fileID: -7519905455974691242}
   m_Layer: 10
   m_Name: Fighter
   m_TagString: Enemy
@@ -141,6 +142,18 @@ MonoBehaviour:
   chaseDistance: 7
   state: 0
   speed: 4
+--- !u!114 &-7519905455974691242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50162451315265236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dd5d5780c1c8a48a9c9f10bacfb43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &147442148958760463
 GameObject:
   m_ObjectHideFlags: 0
