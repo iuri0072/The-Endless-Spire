@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 0}
   pointB: {fileID: 0}
-  chaseDistance: 7
+  chaseDistance: 15
   state: 0
   speed: 4
 --- !u!114 &-7519905455974691242
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9dd5d5780c1c8a48a9c9f10bacfb43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &147442148958760463
 GameObject:
   m_ObjectHideFlags: 0

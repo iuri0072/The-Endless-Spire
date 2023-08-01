@@ -7,7 +7,7 @@ public class EnemyBehaviorWarrior : MonoBehaviour
     public GameObject pointA;
     public GameObject pointB;
     public float chaseDistance = 10;
-    public enum State { statePatrol, stateChase };
+    public enum State { statePatrol, stateChase, stateWait };
     public State state;
     private State originalState;
     private State lastState;
@@ -19,6 +19,7 @@ public class EnemyBehaviorWarrior : MonoBehaviour
     private Transform currentPoint;
     private GameObject player;
     private GameObject bodyCenter;
+    private bool animInProgress;
 
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class EnemyBehaviorWarrior : MonoBehaviour
         anim = GetComponent<Animator>();
         currentPoint = pointB.transform;
         player = GameObject.FindWithTag("Player");
+        animInProgress = false;
 
         originalState = state;
         lastState = originalState;
@@ -108,6 +110,9 @@ public class EnemyBehaviorWarrior : MonoBehaviour
 
     private State VerifyState()
     {
+        if (animInProgress)
+            return State.stateWait;
+
         if (Vector2.Distance(bodyCenter.transform.position, player.transform.position) > chaseDistance)
         {
             if(lastState == State.stateChase)
@@ -155,5 +160,13 @@ public class EnemyBehaviorWarrior : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x = Mathf.Abs(localScale.x);
         transform.localScale = localScale;
+    }
+    private void AnimStart()
+    {
+        animInProgress = true;
+    }
+    private void AnimEnd()
+    {
+        animInProgress = false;
     }
 }

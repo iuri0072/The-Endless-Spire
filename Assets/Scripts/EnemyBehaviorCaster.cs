@@ -128,10 +128,7 @@ public class EnemyBehaviorCaster : MonoBehaviour
         else
         {
             if (lastState == State.statePatrol)
-            {
                 lastState = State.stateAttack;
-                //timer = timeBtwShots;
-            }
             anim.SetTrigger("Attack");
             return State.stateAttack;
         }
