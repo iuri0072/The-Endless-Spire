@@ -1439,10 +1439,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2655718824079553079, guid: 2250d322bd461fb409103687e66f9e08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773940864532001361, guid: 2250d322bd461fb409103687e66f9e08, type: 3}
+      propertyPath: objects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5773940864532001361, guid: 2250d322bd461fb409103687e66f9e08, type: 3}
       propertyPath: objects.Array.data[0]
       value: 
-      objectReference: {fileID: 50162451315265236, guid: 741b932b964adfb4aaad01d0bb491b73, type: 3}
+      objectReference: {fileID: 1964749648483648206, guid: 5454eff70ea197c4d87d2e1d76386c3d, type: 3}
+    - target: {fileID: 5773940864532001361, guid: 2250d322bd461fb409103687e66f9e08, type: 3}
+      propertyPath: objects.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773940864532001361, guid: 2250d322bd461fb409103687e66f9e08, type: 3}
+      propertyPath: objects.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -2336007608772269769, guid: 2250d322bd461fb409103687e66f9e08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2250d322bd461fb409103687e66f9e08, type: 3}
