@@ -9,7 +9,7 @@ public class EnemyBehaviorCaster : MonoBehaviour
     public GameObject spell;
     public Transform spellPos;
     public float attackDistance = 15;
-    public enum State { statePatrol, stateAttack };
+    public enum State { statePatrol, stateAttack, stateWait };
     public State state;
     private State originalState;
     private State lastState;
@@ -21,7 +21,8 @@ public class EnemyBehaviorCaster : MonoBehaviour
     private Transform currentPoint;
     private GameObject player;
     private GameObject bodyCenter;
-    private float timer;
+    //private float timer;
+    private bool animInProgress;
     public float timeBtwShots;
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class EnemyBehaviorCaster : MonoBehaviour
         anim = GetComponent<Animator>();
         currentPoint = pointB.transform;
         player = GameObject.FindWithTag("Player");
+        animInProgress = false;
 
         originalState = state;
         lastState = originalState;
@@ -57,17 +59,11 @@ public class EnemyBehaviorCaster : MonoBehaviour
         }
         if (VerifyState() == State.stateAttack)
         {
-            timer += Time.deltaTime;
+            /*timer += Time.deltaTime;
             if (timer > timeBtwShots)
-                Attack();
-
-            Vector2 dir = (transform.position - player.transform.position).normalized;
-            Vector3 localScale = transform.localScale;
-            if (dir.x < 0)
-                localScale.x = Mathf.Abs(localScale.x);
-            else
-                localScale.x = -Mathf.Abs(localScale.x);
-            transform.localScale = localScale;
+                Attack();*/
+            FacePlayerDirection();
+            
         }
         if(Mathf.Round(pointA.transform.position.y) != Mathf.Round(this.transform.position.y + 1.5f))
         {
@@ -88,7 +84,7 @@ public class EnemyBehaviorCaster : MonoBehaviour
     private void Attack()
     {
         Instantiate(spell, spellPos.position, Quaternion.identity);
-        timer = 0;
+        //timer = 0;
     }
 
     private void Patrol()
@@ -114,6 +110,9 @@ public class EnemyBehaviorCaster : MonoBehaviour
 
     private State VerifyState()
     {
+        if (animInProgress)
+            return State.stateWait;
+
         if (Vector2.Distance(bodyCenter.transform.position, player.transform.position) > attackDistance)
         {
             if (lastState == State.stateAttack)
@@ -131,7 +130,7 @@ public class EnemyBehaviorCaster : MonoBehaviour
             if (lastState == State.statePatrol)
             {
                 lastState = State.stateAttack;
-                timer = timeBtwShots;
+                //timer = timeBtwShots;
             }
             anim.SetTrigger("Attack");
             return State.stateAttack;
@@ -163,5 +162,24 @@ public class EnemyBehaviorCaster : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x = Mathf.Abs(localScale.x);
         transform.localScale = localScale;
+    }
+    private void FacePlayerDirection()
+    {
+        Vector2 dir = (transform.position - player.transform.position).normalized;
+        Vector3 localScale = transform.localScale;
+        if (dir.x < 0)
+            localScale.x = Mathf.Abs(localScale.x);
+        else
+            localScale.x = -Mathf.Abs(localScale.x);
+        transform.localScale = localScale;
+    }
+
+    private void AnimStart()
+    {
+        animInProgress = true;
+    }
+    private void AnimEnd()
+    {
+        animInProgress = false;
     }
 }
