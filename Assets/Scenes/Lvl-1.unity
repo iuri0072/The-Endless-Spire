@@ -2090,7 +2090,8 @@ MonoBehaviour:
   - {fileID: 4000244103659558151, guid: 1fc9133205163da47897402195fd3d2e, type: 3}
   player: {fileID: 5294815872888865223, guid: f1df89ad49f1e3d438144d3fc267e3ee, type: 3}
   mainCamera: {fileID: 519420028}
-  door: {fileID: 474693940569752109, guid: 5c39880629b2bcc4c85db45f981b1b13, type: 3}
+  entrance: {fileID: 9135242712410630145, guid: b1ec7ab0054db274fb5cccf4c4f8f533, type: 3}
+  exit: {fileID: 8394440641864438416, guid: 12d60394664037f43b3eecc863cce3e4, type: 3}
   allPositionColliders: []
   moveAmountX: 54
   moveAmountY: 30
@@ -2100,6 +2101,7 @@ MonoBehaviour:
   startTimeBtwRoom: 0.25
   stopGeneration: 0
   PoseCollidersRemoved: 0
+  PoseColliderNotify: 0
   room:
     serializedVersion: 2
     m_Bits: 128
