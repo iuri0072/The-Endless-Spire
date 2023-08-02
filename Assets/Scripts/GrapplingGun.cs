@@ -3,6 +3,7 @@ using UnityEngine;
 public class GrapplingGun : MonoBehaviour
 {
     public Animator anim;
+    public GameObject player;
     [Header("Scripts Ref:")]
     public GrapplingRope grappleRope;
 
@@ -52,6 +53,7 @@ public class GrapplingGun : MonoBehaviour
     private void Start()
     {
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
         m_camera = Camera.main;
@@ -59,13 +61,35 @@ public class GrapplingGun : MonoBehaviour
 
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
+            if (player.transform.localScale.x > 0 && player.transform.position.x > m_camera.ScreenToWorldPoint(Input.mousePosition).x)
+            {
+                //Debug.Log("Turn left if grappling behind. Player Scale: " + player.transform.localScale.x + ", Player Position: " + player.transform.position.x + "Mouse Pos:" + m_camera.ScreenToWorldPoint(Input.mousePosition).x);
+                player.GetComponent<PlayerMovement>().Turn();
+            }
+            else if (player.transform.localScale.x < 0 && player.transform.position.x < m_camera.ScreenToWorldPoint(Input.mousePosition).x)
+            {
+                //Debug.Log("Turn right if grappling behind. Player Scale: " + player.transform.localScale.x + ", Player Position: " + player.transform.position.x + "Mouse Pos:" + m_camera.ScreenToWorldPoint(Input.mousePosition).x);
+                player.GetComponent<PlayerMovement>().Turn();
+            }
             //Debug.Log("Setting Grapple Point");
             SetGrapplePoint();
         }
         else if (Input.GetKey(KeyCode.Mouse1))
         {
+            //Debug.Log("Debug Grappling behind. Player Scale: " + player.transform.localScale.x + ", Player Position: " + player.transform.position.x + "Mouse Pos:" + m_camera.ScreenToWorldPoint(Input.mousePosition).x);
+            if (player.transform.localScale.x > 0 && player.transform.position.x > m_camera.ScreenToWorldPoint(Input.mousePosition).x)
+            {
+                //Debug.Log("Turn left if grappling behind. Player Scale: " + player.transform.localScale.x + ", Player Position: " + player.transform.position.x + "Mouse Pos:" + m_camera.ScreenToWorldPoint(Input.mousePosition).x);
+                player.GetComponent<PlayerMovement>().Turn();
+            }
+            else if(player.transform.localScale.x < 0 && player.transform.position.x < m_camera.ScreenToWorldPoint(Input.mousePosition).x)
+            {
+                //Debug.Log("Turn right if grappling behind. Player Scale: " + player.transform.localScale.x + ", Player Position: " + player.transform.position.x + "Mouse Pos:" + m_camera.ScreenToWorldPoint(Input.mousePosition).x);
+                player.GetComponent<PlayerMovement>().Turn();
+            }
             if (grappleRope.enabled)
             {
                 RotateGun(grapplePoint, false);
@@ -73,6 +97,7 @@ public class GrapplingGun : MonoBehaviour
             else
             {
                 Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+                
                 RotateGun(mousePos, true);
             }
 

@@ -4985,7 +4985,7 @@ PrefabInstance:
       objectReference: {fileID: 6463491402019854756, guid: f1df89ad49f1e3d438144d3fc267e3ee, type: 3}
     - target: {fileID: 2008573369820258836, guid: a5f02fa169dadc24a80e10f3e6bb82b9, type: 3}
       propertyPath: mapStatic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2008573369820258836, guid: a5f02fa169dadc24a80e10f3e6bb82b9, type: 3}
       propertyPath: backgroundGroup
