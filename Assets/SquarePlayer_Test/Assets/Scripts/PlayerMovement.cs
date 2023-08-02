@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
 	//just paste in all the parameters, though you will need to manuly change all references in this script
 	public PlayerData Data;
 	public Animator anim;
+	[SerializeField]private GameObject selectedItem;
+	public bool itemCurrentlySelected;
 	#region COMPONENTS
     public Rigidbody2D RB { get; private set; }
 	//Script to handle all player animations, all references can be safely removed if you're importing into your own project.
@@ -92,6 +94,10 @@ public class PlayerMovement : MonoBehaviour
 
 	private void Update()
 	{
+		if (selectedItem != null)
+		{
+			//Debug.Log(selectedItem.name);
+		}
         #region TIMERS
         LastOnGroundTime -= Time.deltaTime;
 		LastOnWallTime -= Time.deltaTime;
@@ -113,7 +119,10 @@ public class PlayerMovement : MonoBehaviour
 		else
 			anim.SetBool("isWalking", false);
 
-
+		if (selectedItem != null && Input.GetKeyDown(KeyCode.F))
+        {
+			OnItemPickup();
+        }
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
         {
 			OnJumpInput();
@@ -344,7 +353,10 @@ public class PlayerMovement : MonoBehaviour
 	{
 		LastPressedJumpTime = Data.jumpInputBufferTime;
 	}
-
+	public void OnItemPickup()
+    {
+		Debug.Log("Picking up Item: " + selectedItem.name);
+    }
 	public void OnJumpUpInput()
 	{
 		if (CanJumpCut() || CanWallJumpCut())
@@ -362,7 +374,20 @@ public class PlayerMovement : MonoBehaviour
 	{
 		RB.gravityScale = scale;
 	}
-
+	public GameObject GetSelectedItem()
+    {
+		return selectedItem;
+    }
+	public void SetSelectedItem(GameObject g)
+    {
+		itemCurrentlySelected = true;
+		selectedItem = g;
+    }
+	public void DeSelectItem()
+    {
+		itemCurrentlySelected = false;
+		selectedItem = null;
+    }
 	private void Sleep(float duration)
     {
 		//Method used so we don't need to call StartCoroutine everywhere
