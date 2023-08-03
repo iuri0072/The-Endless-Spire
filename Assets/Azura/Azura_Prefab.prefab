@@ -2488,6 +2488,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 107913b40cc007b47b24a212aaa033ad, type: 2}
   anim: {fileID: 5664746735167774848}
+  selectedItem: {fileID: 0}
+  itemCurrentlySelected: 0
   _groundCheckPoint: {fileID: 2726672543980415298}
   _groundCheckSize: {x: 1.11, y: 0.16}
   _frontWallCheckPoint: {fileID: 6528086362895712413}
@@ -2495,7 +2497,7 @@ MonoBehaviour:
   _wallCheckSize: {x: 0.5, y: 1}
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
 --- !u!231 &8845391605508484929
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -2529,11 +2531,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 5664746735167774848}
-  attackPoint: {fileID: 1372147330276065770}
-  attackRange: 1
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
+  attackDamage: 15
+  attackRange: 1
+  attackPoint: {fileID: 1372147330276065770}
+  attackRate: 1
 --- !u!1 &5441999570387998846
 GameObject:
   m_ObjectHideFlags: 0
