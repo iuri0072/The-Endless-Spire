@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class SceneMgr : MonoBehaviour
 {
     Animator anim;
+    AudioSource mainTheme;
     public void Start()
     {
         anim = GetComponent<Animator>();
+        mainTheme = GetComponent<AudioSource>();
     }
     public void StartGame()
     {
@@ -30,5 +32,9 @@ public class SceneMgr : MonoBehaviour
             anim.SetBool("isViewingCredits", false);
             anim.SetBool("isLeavingCredits", true);
         }
+    }
+    public void PlayMainTheme()
+    {
+        mainTheme.Play();
     }
 }

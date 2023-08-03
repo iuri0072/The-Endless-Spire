@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class ItemInteraction : MonoBehaviour
 {
@@ -13,11 +15,25 @@ public class ItemInteraction : MonoBehaviour
     [SerializeField] private Transform[] points;
     [SerializeField] private ItemLineController item_LR;
     [SerializeField] private Transform uiPointA;
+    [SerializeField] private TMP_Text itemDetails;
+    [SerializeField] private TMP_Text itemStats;
+    [SerializeField] private TMP_Text itemName;
+    [SerializeField] private Image itemImage;
+    public string textName;
+    public string textStats;
+    public string textDetails;
+    public Sprite imagePortrait;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         pm = player.GetComponent<PlayerMovement>();
+        uiPointA = GameObject.Find("UIDisplayPointA").transform;
+        itemImage = itemDescription.transform.GetChild(3).gameObject.GetComponent<Image>();
+        itemDetails.text = textDetails;
+        itemStats.text = textStats;
+        itemName.text = textName;
+        itemImage.sprite = imagePortrait;
     }
 
     private void Update()
@@ -59,5 +75,17 @@ public class ItemInteraction : MonoBehaviour
     {
         itemDescription.SetActive(false);
         item_LR.DestroyLine();
+    }
+    public void ActivateItem()
+    {
+        Debug.Log("Player Activated Item");
+        //Case Code goes here based on item type and data.
+        HideDisplayInfo();
+        Destroy(this.gameObject);
+        pm.DeSelectItem();
+    }
+    public void PullToPlayer()
+    {
+        Debug.Log("Pulling item to player:" + this.name);
     }
 }

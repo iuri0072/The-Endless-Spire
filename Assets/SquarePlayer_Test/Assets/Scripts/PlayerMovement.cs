@@ -355,7 +355,8 @@ public class PlayerMovement : MonoBehaviour
 	}
 	public void OnItemPickup()
     {
-		Debug.Log("Picking up Item: " + selectedItem.name);
+		//Debug.Log("Picking up Item: " + selectedItem.name);
+		selectedItem.GetComponent<ItemInteraction>().ActivateItem();
     }
 	public void OnJumpUpInput()
 	{
