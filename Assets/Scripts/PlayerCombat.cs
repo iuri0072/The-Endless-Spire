@@ -44,6 +44,11 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    /*private void OnTriggerEnter2D(Collider2D collision)
+    {
+        i'll change the dmging syst in here, hold on dudes!
+    }*/
+
     private void OnDrawGizmos()
     {
         if (attackPoint == null)

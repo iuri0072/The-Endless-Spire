@@ -942,7 +942,293 @@ AnimationClip:
     path: bone_1/bone_10
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Face
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Collar
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Pauldron_1
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Left Hand
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Right Leg
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Scarf
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Hips
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: 'BodyParts/Pauldron '
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: 'BodyParts/Right Hand '
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Left Forearm
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Left Arm
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Back Hair
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Left Leg
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Back Collar
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Back Of The Scarf
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Right Foot
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Collar_1
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Front Pauldron
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Hook
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Right Arm
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Pauldron
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Belt
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Neck
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Back Pauldron
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Chest
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - time: 0.5
+      value: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - time: 0.98333335
+      value: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    attribute: m_Materials.Array.data[0]
+    path: BodyParts/Left Foot
+    classID: 212
+    script: {fileID: 0}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -1083,13 +1369,273 @@ AnimationClip:
       typeID: 4
       customType: 4
       isPPtrCurve: 0
-    pptrCurveMapping: []
+    - serializedVersion: 2
+      path: 3100623732
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 1917176629
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 853352298
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 4100219491
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 1824771262
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 621662599
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 3275231548
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 3399718294
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 3867277282
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 3091374262
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 1217030643
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2747337588
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2768541480
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2871307864
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 388651363
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 53274709
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2208561301
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2875184161
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 428079942
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2169320037
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 373124343
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 3716989122
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2647289408
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 4223022507
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2135370193
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 445192575
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 21
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.98333335
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

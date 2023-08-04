@@ -8,6 +8,7 @@ public class EnemySpell : MonoBehaviour
     private Rigidbody2D rb;
     public float force;
     private float timer;
+    private int spellPower = 100;
 
     private void Start()
     {
@@ -34,6 +35,15 @@ public class EnemySpell : MonoBehaviour
         {
             Destroy(gameObject);
             //code for damaging player
+
+            if (player.GetComponent<PlayerAttributes>().ivunerable == false)
+                DoDamage();
         }
+    }
+
+    void DoDamage()
+    {
+        player.GetComponent<PlayerAttributes>().TakeDamage(spellPower);
+        player.GetComponent<PlayerAttributes>().ivunerable = true;
     }
 }
