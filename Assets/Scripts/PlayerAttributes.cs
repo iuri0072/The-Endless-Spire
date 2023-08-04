@@ -36,6 +36,9 @@ public class PlayerAttributes : MonoBehaviour
 
     private void Update()
     {
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
         if(ivunerable == true)
         {
             ivunerabilityTime += Time.deltaTime;

@@ -8,7 +8,7 @@ public class EnemySpell : MonoBehaviour
     private Rigidbody2D rb;
     public float force;
     private float timer;
-    private int spellPower = 100;
+    private int spellPower = 1;
 
     private void Start()
     {

@@ -2363,6 +2363,7 @@ GameObject:
   - component: {fileID: 8845391605508484929}
   - component: {fileID: 8899717201734846326}
   - component: {fileID: 7686767550414293450}
+  - component: {fileID: 2166099602150456499}
   m_Layer: 0
   m_Name: Azura_Prefab
   m_TagString: Player
@@ -2547,7 +2548,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5294815872888865223}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a16d5316904f304e9d2e657d3fada2d, type: 3}
   m_Name: 
@@ -2557,6 +2558,18 @@ MonoBehaviour:
   ivunerable: 0
   ivunerabilityTime: 0
   resetTimer: 2
+--- !u!114 &2166099602150456499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294815872888865223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229edff0bb6a73d4182bede814d8ec58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5441999570387998846
 GameObject:
   m_ObjectHideFlags: 0
