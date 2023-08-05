@@ -13,6 +13,7 @@ public class PlayerCombat : MonoBehaviour
     public Transform attackPoint;
     public int critChance = 10;
     public float critMultiplier = 2;
+    private bool critDmg = false;
 
     public float attackRate = 1f;
     float nextAttackTime = 0f;
@@ -36,8 +37,13 @@ public class PlayerCombat : MonoBehaviour
         float currentDmg = attackDamage;
 
         var willCrit = Random.Range(0, 101);
-        if(willCrit <= critChance)
+        if (willCrit <= critChance)
+        {
             currentDmg *= critMultiplier;
+            critDmg = true;
+        }
+        else
+            critDmg = false;
 
         //Play an attack animation
         anim.SetTrigger("Attack");
@@ -48,7 +54,7 @@ public class PlayerCombat : MonoBehaviour
         //Damage them
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyAttributes>().TakeDamage((int)currentDmg);
+            enemy.GetComponent<EnemyAttributes>().TakeDamage((int)currentDmg, critDmg);
         }
     }
 

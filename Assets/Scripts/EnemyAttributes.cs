@@ -16,9 +16,14 @@ public class EnemyAttributes : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool critDmg)
     {
         //print("damage taken: " + damage);
+        Vector3 posRandomness = new Vector3(Random.Range(0f, 0.25f), Random.Range(2f, 2.25f), 0f);
+        if(critDmg)
+            DamagePopUpGenerator.current.CreatePopUp(transform.position + posRandomness, damage.ToString(), Color.blue);
+        else
+            DamagePopUpGenerator.current.CreatePopUp(transform.position + posRandomness, damage.ToString(), Color.yellow);
         if (dummy)
             return;
         currentHealth -= damage;
