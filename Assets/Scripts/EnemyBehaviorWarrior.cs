@@ -13,6 +13,7 @@ public class EnemyBehaviorWarrior : MonoBehaviour
     private State lastState;
 
     public float speed;
+    private float originalSpeed;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -20,6 +21,9 @@ public class EnemyBehaviorWarrior : MonoBehaviour
     private GameObject player;
     private GameObject bodyCenter;
     private bool animInProgress;
+    private string lastDir;
+    private float waitTime = 0f;
+    private float resetTime = 2f;
 
     private void Awake()
     {
@@ -29,6 +33,7 @@ public class EnemyBehaviorWarrior : MonoBehaviour
     }
     private void Start()
     {
+        originalSpeed = speed;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         currentPoint = pointB.transform;
@@ -72,6 +77,11 @@ public class EnemyBehaviorWarrior : MonoBehaviour
         }
     }
 
+    /*IEnumerator Wait(int waitTime)
+    {
+        print("wait");
+        yield return new WaitForSeconds(waitTime);
+    }*/
     private void Chase()
     {
         var step = speed * Time.deltaTime;
@@ -79,11 +89,46 @@ public class EnemyBehaviorWarrior : MonoBehaviour
         transform.position =  Vector2.MoveTowards(transform.position, chaseDestination, step);
 
         Vector2 dir = (transform.position - player.transform.position).normalized;
+        
+        //Correcting enemy sprite direction
         Vector3 localScale = transform.localScale;
         if (dir.x < 0)
+        {
+            if(lastDir == "L")
+            {
+                speed = 0;
+                waitTime += Time.deltaTime;
+                if (waitTime <= resetTime)
+                    return;
+                else
+                {
+                    waitTime = 0f;
+                    speed = originalSpeed;
+                }
+            }
+
             localScale.x = Mathf.Abs(localScale.x);
+            lastDir = "R";
+        }
         else
+        {
+            if (lastDir == "R")
+            {
+                speed = 0;
+                waitTime += Time.deltaTime;
+                if (waitTime <= resetTime)
+                    return;
+                else
+                {
+                    waitTime = 0f;
+                    speed = originalSpeed;
+                }
+            }
+
             localScale.x = -Mathf.Abs(localScale.x);
+            lastDir = "L";
+        }
+
         transform.localScale = localScale;
     }
 
