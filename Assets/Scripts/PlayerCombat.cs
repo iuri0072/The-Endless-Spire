@@ -36,8 +36,7 @@ public class PlayerCombat : MonoBehaviour
         float currentDmg = attackDamage;
 
         var willCrit = Random.Range(0, 101);
-        print(willCrit);
-        if(willCrit < critChance)
+        if(willCrit <= critChance)
             currentDmg *= critMultiplier;
 
         //Play an attack animation

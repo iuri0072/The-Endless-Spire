@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 1373306802402064905}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,6 +351,7 @@ MonoBehaviour:
   atkSpeed: {fileID: 1498139591072824398}
   critPerc: {fileID: 5942346634283248570}
   critMult: {fileID: 3767589126775762662}
+  player: {fileID: 0}
 --- !u!1 &1193535565858630689
 GameObject:
   m_ObjectHideFlags: 0

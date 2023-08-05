@@ -8,6 +8,7 @@ public class CameraControl : MonoBehaviour
     public GameObject backgroundGroup;
     public Transform player;
     private Transform lookAt;
+    private bool cameraReady = false;
     public bool mapStatic = true;
     public float boundX = .15f;
     public float boundY = .05f;
@@ -19,6 +20,9 @@ public class CameraControl : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!cameraReady)
+            return;
+
         if(lookAt.tag == "Player" && !mapStatic)
         {
             Vector3 delta = Vector3.zero;
@@ -69,5 +73,12 @@ public class CameraControl : MonoBehaviour
     public void updateLookAt(Transform newTarget)
     {
         lookAt = newTarget;
+    }
+
+    public void FindPlayer()
+    {
+        print("Main Camera is trying to find player");
+        cameraReady = true;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 }

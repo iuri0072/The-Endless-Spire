@@ -10,6 +10,7 @@ TagManager:
   - MusicPlayer
   - Experience
   - exp_orb
+  - GameManager
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelGeneration : MonoBehaviour
 {
     public Transform[] startingPositions;
+    private Transform playerSpawnLocation;
     public GameObject[] rooms; // index 0 --> LR, index 1 --> LRB, index 2 --> LRT, index 3 --> LRBT
     public GameObject player;
     public GameObject mainCamera;
@@ -13,6 +14,7 @@ public class LevelGeneration : MonoBehaviour
     public GameObject exit;
     public BoxCollider2D[] allPositionColliders;
     private int direction;
+    public GameObject gameManager;
     public float moveAmountX;
     public float moveAmountY;
 
@@ -21,7 +23,7 @@ public class LevelGeneration : MonoBehaviour
     public float maxY;
 
     private float timeBtwRoom;
-    public float startTimeBtwRoom = 0.25f;
+    public float startTimeBtwRoom = 0.0005f;
 
     public bool stopGeneration;
     public bool PoseCollidersRemoved;
@@ -37,10 +39,7 @@ public class LevelGeneration : MonoBehaviour
         transform.position = startingPositions[randStartingPos].position;
         Instantiate(rooms[0], transform.position, Quaternion.identity);
         Instantiate(entrance, transform.position, Quaternion.identity);
-        player = (GameObject)Instantiate(player, transform.position, Quaternion.identity);
-        //player.transform.position = transform.position + new Vector3(1f, 0, 0);
-        mainCamera.GetComponent<CameraControl>().player = player.transform;
-        mainCamera.GetComponent<CameraControl>().updateLookAt(player.transform);
+        SpawnPlayer();
 
         stopGeneration = false;
         direction = Random.Range(1, 6);
@@ -148,6 +147,7 @@ public class LevelGeneration : MonoBehaviour
                 //Instantiate(door, transform.position, Quaternion.identity);
                 //Instantiate(boss, transform.position, Quaternion.identity);
                 Instantiate(exit, transform.position, Quaternion.identity);
+                //SpawnPlayer();
                 stopGeneration = true;
                 //Debug.Log("All rooms generated");
             }
@@ -186,5 +186,15 @@ public class LevelGeneration : MonoBehaviour
         {
             PoseCollidersRemoved = true;
         }
+    }
+
+    private void SpawnPlayer()
+    {
+        print("SpawnPlayer activated");
+        player = (GameObject)Instantiate(player, transform.position, Quaternion.identity);
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        gameManager.GetComponent<UIManagement>().FindPlayer();
+        mainCamera.GetComponent<CameraControl>().FindPlayer();
+        mainCamera.GetComponent<CameraControl>().updateLookAt(player.transform);
     }
 }

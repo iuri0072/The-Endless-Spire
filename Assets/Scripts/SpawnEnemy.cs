@@ -16,6 +16,11 @@ public class SpawnEnemy : MonoBehaviour
     }
     private void Update()
     {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            return;
+        }
         distanceFromPlayer = Vector3.Distance(player.transform.position, this.transform.position);
         if(distanceFromPlayer <= SpawnRange && !SpawnConsumed)
         {

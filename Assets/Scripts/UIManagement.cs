@@ -17,18 +17,20 @@ public class UIManagement : MonoBehaviour
     public TextMeshProUGUI critMult;
 
 
-    private GameObject player;
+    public GameObject player;
     private PlayerAttributes playerAttributes;
 
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
         //UpdateWeaponStats();
     }
 
     private void Update()
     {
+        if (player == null)
+            return;
         UpdateHearthsArray();
         UpdateWeaponStats();
     }
@@ -61,5 +63,11 @@ public class UIManagement : MonoBehaviour
         atkSpeed.text = "Speed: " + player.GetComponent<PlayerCombat>().attackRate;
         critPerc.text = "Crit: " + player.GetComponent<PlayerCombat>().critChance + "%";
         critMult.text = "Crit Dmg: " + player.GetComponent<PlayerCombat>().critMultiplier + "x";
+    }
+
+    public void FindPlayer()
+    {
+        print("Game Manager is trying to find player");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 }

@@ -18,7 +18,7 @@ public class EnemyAttributes : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        print("damage taken: " + damage);
+        //print("damage taken: " + damage);
         if (dummy)
             return;
         currentHealth -= damage;
