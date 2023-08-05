@@ -85,14 +85,34 @@ public class ItemInteraction : MonoBehaviour
     }
     public void ActivateItem()
     {
-        Debug.Log("Player Activated Item");
+        //Debug.Log("Player Activated Item");
         //Case Code goes here based on item type and data.
+        string tag = this.gameObject.tag;
         if (infoDisplayed)
         {
             HideDisplayInfo();
         }
+        switch (tag)
+        {
+            case "Experience":
+                //Increase experience count via "OnOrbPickup()"
+                GainedExperience();
+                break;
+            case "Potion":
+                //Increase health via a function tbd.
+                ConsumePotion();
+                break;
+        }
+
         Destroy(this.gameObject);
         pm.DeSelectItem();
     }
-
+    private void GainedExperience()
+    {
+        GameObject.Find("AncestralOrbStat").GetComponent<EXP_Handler>().OnOrbPickup();
+    }
+    private void ConsumePotion()
+    {
+        //Iuri, place code here to call and increase hearts on UI.
+    }
 }
