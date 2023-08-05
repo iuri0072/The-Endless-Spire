@@ -41,11 +41,13 @@ public class PlayerAttributes : MonoBehaviour
 
         if(ivunerable == true)
         {
+            anim.SetLayerWeight(1, 1);
             ivunerabilityTime += Time.deltaTime;
             if(ivunerabilityTime >= resetTimer)
             {
                 ivunerable = false;
                 ivunerabilityTime = 0;
+                anim.SetLayerWeight(1, 0);
             }
         }
     }

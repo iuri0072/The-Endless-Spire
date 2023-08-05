@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManagement : MonoBehaviour
 {
@@ -10,19 +11,26 @@ public class UIManagement : MonoBehaviour
     public Sprite fullHearth;
     public Sprite emptyHearth;
 
+    public TextMeshProUGUI atkDmg;
+    public TextMeshProUGUI atkSpeed;
+    public TextMeshProUGUI critPerc;
+    public TextMeshProUGUI critMult;
+
+
     private GameObject player;
     private PlayerAttributes playerAttributes;
+
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        //UpdateWeaponStats();
     }
 
     private void Update()
     {
-
         UpdateHearthsArray();
-
+        UpdateWeaponStats();
     }
 
     private void UpdateHearthsArray()
@@ -45,5 +53,13 @@ public class UIManagement : MonoBehaviour
         {
             hearths[i].sprite = fullHearth;
         }
+    }
+
+    private void UpdateWeaponStats()
+    {
+        atkDmg.text = "Dmg: " + player.GetComponent<PlayerCombat>().attackDamage;
+        atkSpeed.text = "Speed: " + player.GetComponent<PlayerCombat>().attackRate;
+        critPerc.text = "Crit: " + player.GetComponent<PlayerCombat>().critChance + "%";
+        critMult.text = "Crit Dmg: " + player.GetComponent<PlayerCombat>().critMultiplier + "x";
     }
 }

@@ -24,6 +24,7 @@ public class ItemInteraction : MonoBehaviour
     public string textDetails;
     public Sprite imagePortrait;
     private bool infoDisplayed = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -113,6 +114,8 @@ public class ItemInteraction : MonoBehaviour
     }
     private void ConsumePotion()
     {
-        //Iuri, place code here to call and increase hearts on UI.
+        if (player.GetComponent<PlayerAttributes>().currentHealth == player.GetComponent<PlayerAttributes>().maxHealth)
+            return;
+        player.GetComponent<PlayerAttributes>().currentHealth++;
     }
 }

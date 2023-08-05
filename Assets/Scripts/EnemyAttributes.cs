@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyAttributes : MonoBehaviour
 {
     private Animator anim;
+    public bool dummy;
 
     public int maxHealth = 100;
     private int currentHealth;
@@ -17,6 +18,9 @@ public class EnemyAttributes : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        print("damage taken: " + damage);
+        if (dummy)
+            return;
         currentHealth -= damage;
 
         //Play hurt animation
