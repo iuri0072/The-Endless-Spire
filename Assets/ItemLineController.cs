@@ -22,6 +22,7 @@ public class ItemLineController : MonoBehaviour
     public void DestroyLine()
     {
         DrawLine = false;
+        
         for (int i = 0; i < points.Length; i++)
         {
             lr.SetPosition(i, Vector3.zero);

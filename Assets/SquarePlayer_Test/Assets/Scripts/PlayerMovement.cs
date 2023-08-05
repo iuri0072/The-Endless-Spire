@@ -119,10 +119,6 @@ public class PlayerMovement : MonoBehaviour
 		else
 			anim.SetBool("isWalking", false);
 
-		if (selectedItem != null && Input.GetKeyDown(KeyCode.F))
-        {
-			OnItemPickup();
-        }
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
         {
 			OnJumpInput();

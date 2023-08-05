@@ -23,6 +23,7 @@ public class ItemInteraction : MonoBehaviour
     public string textStats;
     public string textDetails;
     public Sprite imagePortrait;
+    private bool infoDisplayed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,11 +37,15 @@ public class ItemInteraction : MonoBehaviour
         itemImage.sprite = imagePortrait;
     }
 
+
     private void Update()
     {
         distanceFromPlayer = Vector3.Distance(player.transform.position, this.transform.position);
-        
-        if (distanceFromPlayer <= DisplayTextRange)
+        if (this.GetComponent<ReverseGrappling>().isLerping && !pm.itemCurrentlySelected)
+        {
+            pm.SetSelectedItem(this.gameObject);
+        }
+        if (distanceFromPlayer <= DisplayTextRange && !this.GetComponent<ReverseGrappling>().isLerping)
         {
             if (!pm.itemCurrentlySelected)
             {
@@ -70,22 +75,24 @@ public class ItemInteraction : MonoBehaviour
         points = _points;
         item_LR.SetUpLine(points);
         //Debug.Log("Player Near Item");
+        infoDisplayed = true;
     }
     private void HideDisplayInfo()
     {
         itemDescription.SetActive(false);
         item_LR.DestroyLine();
+        infoDisplayed = false;
     }
     public void ActivateItem()
     {
         Debug.Log("Player Activated Item");
         //Case Code goes here based on item type and data.
-        HideDisplayInfo();
+        if (infoDisplayed)
+        {
+            HideDisplayInfo();
+        }
         Destroy(this.gameObject);
         pm.DeSelectItem();
     }
-    public void PullToPlayer()
-    {
-        Debug.Log("Pulling item to player:" + this.name);
-    }
+
 }

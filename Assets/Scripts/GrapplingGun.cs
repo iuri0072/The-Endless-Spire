@@ -10,7 +10,7 @@ public class GrapplingGun : MonoBehaviour
     [Header("Layers Settings:")]
     [SerializeField] private bool grappleToAll = false;
     [SerializeField] private int grappableLayerNumber = 6;
-
+    [SerializeField] private int[] reverseGrappleLayers;
     [Header("Main Camera:")]
     public Camera m_camera;
 
@@ -22,6 +22,7 @@ public class GrapplingGun : MonoBehaviour
     [Header("Physics Ref:")]
     public SpringJoint2D m_springJoint2D;
     public Rigidbody2D m_rigidbody;
+    public GameObject targetObject;
 
     [Header("Rotation:")]
     [SerializeField] private bool rotateOverTime = true;
@@ -30,7 +31,8 @@ public class GrapplingGun : MonoBehaviour
     [Header("Distance:")]
     [SerializeField] private bool hasMaxDistance = false;
     [SerializeField] private float maxDistnace = 20;
-
+    private float elapsedTime;
+    private float desiredDuration = 3f;
     private enum LaunchType
     {
         Transform_Launch,
@@ -61,9 +63,17 @@ public class GrapplingGun : MonoBehaviour
 
     private void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        float percentageComplete = elapsedTime / desiredDuration;
+        if (anim.GetBool("isGrappling"))
         {
+            elapsedTime += Time.deltaTime;
+            //Debug.Log(elapsedTime);
+            
+        }
+        else { elapsedTime = 0; }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        { 
             if (player.transform.localScale.x > 0 && player.transform.position.x > m_camera.ScreenToWorldPoint(Input.mousePosition).x)
             {
                 //Debug.Log("Turn left if grappling behind. Player Scale: " + player.transform.localScale.x + ", Player Position: " + player.transform.position.x + "Mouse Pos:" + m_camera.ScreenToWorldPoint(Input.mousePosition).x);
@@ -75,7 +85,16 @@ public class GrapplingGun : MonoBehaviour
                 player.GetComponent<PlayerMovement>().Turn();
             }
             //Debug.Log("Setting Grapple Point");
-            SetGrapplePoint();
+            Vector2 dv = GetDistanceVector();
+            RaycastHit2D _hit = GetRayCastHit2D(dv);
+            if (IsLayerAReverseGrapple(_hit)) {
+                SetReverseGrapplePoint();
+                _hit.transform.gameObject.GetComponent<ReverseGrappling>().FlipTheLerp(firePoint.position, launchSpeed, grappleRope);
+            }
+            else
+            {
+                SetGrapplePoint();
+            }
         }
         else if (Input.GetKey(KeyCode.Mouse1))
         {
@@ -105,9 +124,12 @@ public class GrapplingGun : MonoBehaviour
             {
                 if (launchType == LaunchType.Transform_Launch)
                 {
+
                     Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
                     Vector2 targetPos = grapplePoint - firePointDistnace;
-                    gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
+                    //gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
+                    gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Mathf.SmoothStep(0, 1, percentageComplete));
+
                 }
             }
         }
@@ -120,14 +142,56 @@ public class GrapplingGun : MonoBehaviour
             grappleRope.enabled = false;
             m_springJoint2D.enabled = false;
             m_rigidbody.gravityScale = 1;
+            
         }
         else
         {
+
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);
         }
     }
 
+    void SetReverseGrapplePoint()
+    {
+        Vector2 dv = GetDistanceVector();
+        if (Physics2D.Raycast(firePoint.position, dv.normalized))
+        {       
+            RaycastHit2D _hit = GetRayCastHit2D(dv);
+                if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+                {
+                    grapplePoint = _hit.point;
+                    grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                    grappleRope.targetedObject = _hit.transform.gameObject;
+                    grappleRope.isReverseGrapple = true;
+                    grappleRope.enabled = true;
+                }
+                else
+                { //Debug.Log("Hit Point distances and firepoint distance are not within max distance range."); 
+
+                }
+
+        }
+        else
+        { //Debug.Log("Raycast did not collide with anything"); 
+
+        }
+        //gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
+    }
+    bool IsLayerAReverseGrapple(RaycastHit2D _hit)
+    {
+        bool _check = false;
+        if (!_hit) { return _check; } else {
+            foreach (int i in reverseGrappleLayers)
+            {
+                if (i == _hit.transform.gameObject.layer)
+                {
+                    _check = true;
+                }
+            } 
+        }
+        return _check;
+    }
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)
     {
         Vector3 distanceVector = lookPoint - gunPivot.position;
@@ -145,10 +209,12 @@ public class GrapplingGun : MonoBehaviour
 
     void SetGrapplePoint()
     {
-        Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
-        if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
+        //Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
+        Vector2 dv = GetDistanceVector();
+        if (Physics2D.Raycast(firePoint.position, dv.normalized))
         {
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
+            //RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
+            RaycastHit2D _hit = GetRayCastHit2D(dv);
             if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
             {
                 if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
@@ -156,23 +222,37 @@ public class GrapplingGun : MonoBehaviour
                     //Debug.Log("Raycast Successful, layer is grappable");
                     grapplePoint = _hit.point;
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                    grappleRope.isReverseGrapple = false;
                     grappleRope.enabled = true;
                     if (!anim.GetBool("isGrappling"))
                     {
                         anim.SetBool("isGrappling", true);
                     }
+                     
                 }
                 else { //Debug.Log("Hit Point distances and firepoint distance are not within max distance range."); 
+                    
                 }
             }
             else { //Debug.Log("Layer of hit is " + _hit.transform.gameObject.layer);
+                
                 //Debug.DrawRay(firePoint.position, distanceVector.normalized,Color.red,30);
             }
         }
         else { //Debug.Log("Raycast did not collide with anything"); 
+            
         }
     }
-
+    private Vector2 GetDistanceVector()
+    {
+        Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
+        return distanceVector;
+    }
+    private RaycastHit2D GetRayCastHit2D(Vector2 distanceVector)
+    {
+        RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
+        return _hit;
+    }
     public void Grapple()
     {
         m_springJoint2D.autoConfigureDistance = false;
