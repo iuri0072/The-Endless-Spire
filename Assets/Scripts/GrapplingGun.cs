@@ -74,6 +74,7 @@ public class GrapplingGun : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         { 
+            //Adjusts the direction the player is facing when they go to grapple.
             if (player.transform.localScale.x > 0 && player.transform.position.x > m_camera.ScreenToWorldPoint(Input.mousePosition).x)
             {
                 //Debug.Log("Turn left if grappling behind. Player Scale: " + player.transform.localScale.x + ", Player Position: " + player.transform.position.x + "Mouse Pos:" + m_camera.ScreenToWorldPoint(Input.mousePosition).x);
@@ -84,11 +85,13 @@ public class GrapplingGun : MonoBehaviour
                 //Debug.Log("Turn right if grappling behind. Player Scale: " + player.transform.localScale.x + ", Player Position: " + player.transform.position.x + "Mouse Pos:" + m_camera.ScreenToWorldPoint(Input.mousePosition).x);
                 player.GetComponent<PlayerMovement>().Turn();
             }
-            //Debug.Log("Setting Grapple Point");
+
+            //Perform check to see if the grapple should be switched to reverse mode.
             Vector2 dv = GetDistanceVector();
             RaycastHit2D _hit = GetRayCastHit2D(dv);
             if (IsLayerAReverseGrapple(_hit)) {
                 SetReverseGrapplePoint();
+                //player.GetComponent<PlayerMovement>().SetSelectedItem(_hit.transform.gameObject);
                 _hit.transform.gameObject.GetComponent<ReverseGrappling>().FlipTheLerp(firePoint.position, launchSpeed, grappleRope);
             }
             else

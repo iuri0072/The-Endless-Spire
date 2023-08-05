@@ -95,8 +95,9 @@ public class ItemInteraction : MonoBehaviour
         }
         switch (tag)
         {
-            case "Experience":
+            case "exp_orb":
                 //Increase experience count via "OnOrbPickup()"
+
                 GainedExperience();
                 break;
             case "Potion":
@@ -110,7 +111,10 @@ public class ItemInteraction : MonoBehaviour
     }
     private void GainedExperience()
     {
-        GameObject.Find("AncestralOrbStat").GetComponent<EXP_Handler>().OnOrbPickup();
+        GameObject.Find("OrbsContainer").GetComponent<EXP_Handler>().OnOrbPickup();
+        //GameObject test = GameObject.Find("AncestralOrbStat");
+        //Debug.Log("Found: " + test.name);
+        //Debug.Log(test.GetComponentInChildren<TMP_Text>().text);
     }
     private void ConsumePotion()
     {

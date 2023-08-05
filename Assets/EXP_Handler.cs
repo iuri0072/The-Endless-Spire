@@ -6,7 +6,9 @@ using TMPro;
 
 public class EXP_Handler : MonoBehaviour
 {
+    [SerializeField]
     TMP_Text OrbCount;
+    [SerializeField]
     int ExperiencePoints;
     // Start is called before the first frame update
     void Start()
@@ -19,14 +21,15 @@ public class EXP_Handler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ExperiencePoints.ToString() != OrbCount.text)
+        if (OrbCount.text != ExperiencePoints.ToString())
         {
             OrbCount.text = ExperiencePoints.ToString();
-        }    
+        }
     }
     public void OnOrbPickup()
     {
-        ExperiencePoints += 1;
+        //Debug.Log("Made it to EXP_Handler_Class. Count is "+ExperiencePoints);
+        ExperiencePoints = ExperiencePoints + 1;
     }
     public void OnOrbUse(int cost)
     {

@@ -24,6 +24,7 @@ public class ReverseGrappling : MonoBehaviour
             //grapplePointer = transform.position;
             //Debug.Log(elapsedTime);
             grapplePointer.reverseMoveTime = elapsedTime;
+            
             if (this.GetComponent<ItemInteraction>().distanceFromPlayer < grappleReleaseDistance) {
                 //this.GetComponent<ItemInteraction>().ActivateItem();
                 this.GetComponent<ItemInteraction>().pm.OnItemPickup();

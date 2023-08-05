@@ -8,6 +8,8 @@ TagManager:
   - Pose
   - DisplayPane
   - MusicPlayer
+  - Experience
+  - exp_orb
   layers:
   - Default
   - TransparentFX

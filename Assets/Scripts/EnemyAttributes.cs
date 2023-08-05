@@ -36,6 +36,7 @@ public class EnemyAttributes : MonoBehaviour
     {
         //Die animation
         anim.SetBool("isDead", true);
+        //this.GetComponent<OnDeath>().enabled = true;
         //Disable the enemy
         print("enemy died");
     }

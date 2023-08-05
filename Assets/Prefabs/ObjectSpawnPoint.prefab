@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5773940864532001361}
   - component: {fileID: -2336007608772269769}
   m_Layer: 0
-  m_Name: ItemSpawnPoint
+  m_Name: ObjectSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -49,9 +49,10 @@ MonoBehaviour:
   - {fileID: 50162451315265236, guid: 741b932b964adfb4aaad01d0bb491b73, type: 3}
   - {fileID: 1964749648483648206, guid: 5454eff70ea197c4d87d2e1d76386c3d, type: 3}
   - {fileID: 1929588336565498864, guid: 4b84e62b7d1033a4096863f5b1201897, type: 3}
+  - {fileID: 8938072035359961403, guid: 0565aeb3bb7d8ac4fbb011f8d8292e90, type: 3}
   distanceFromPlayer: 0
   player: {fileID: 0}
-  SpawnRange: 20
+  SpawnRange: 30
   SpawnConsumed: 0
 --- !u!58 &-2336007608772269769
 CircleCollider2D:
