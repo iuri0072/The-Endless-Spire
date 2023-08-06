@@ -11,6 +11,8 @@ public class LevelChanger : MonoBehaviour
     public float NextLevelRange = 5;
     public GameObject Exit;
     public GameMusicPlayer gmp;
+    public bool bossDefeated = false;
+    public bool exitFound = false;
     
     private void Start()
     {
@@ -21,7 +23,18 @@ public class LevelChanger : MonoBehaviour
     void Update()
     {
         //Checks distance from player before proceeding to next level.
-        distanceFromPlayer = Vector3.Distance(player.transform.position, Exit.transform.position);
+        if (Exit == null)
+        {
+            Exit = GameObject.FindGameObjectWithTag("Exit");
+        }
+        else if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        else
+        {
+            distanceFromPlayer = Vector3.Distance(player.transform.position, Exit.transform.position);
+        }
         //if (Input.GetMouseButtonDown(0))
         //    FadeToNextLevel();
         if (distanceFromPlayer <= NextLevelRange)
@@ -36,9 +49,20 @@ public class LevelChanger : MonoBehaviour
                     {
                         gmp.CheckTrackPlaying();
                         int trackIndex = gmp.GetTrackPlaying();
-                        gmp.PlayMusic(trackIndex + 1);
+                        //print(trackIndex);
+                        //Debug.Log("Attempting to change clip from"+trackIndex+" to "+(trackIndex+1));
+                        gmp.FadingMusic(trackIndex, (trackIndex + 1));
                         int index = SceneManager.GetActiveScene().buildIndex + 1;
                         FadeToLevel(index);
+                    }else if(SceneManager.GetActiveScene().name == "Lvl-1")
+                    {
+                        gmp.CheckTrackPlaying();
+                        int trackIndex = gmp.GetTrackPlaying();
+                        //print(trackIndex);
+                        //Debug.Log("Attempting to change clip from"+trackIndex+" to "+(trackIndex+1));
+                        gmp.FadingMusic(2, 1);
+                        ReloadThisLevel();
+                        //Debug.Log("Attempting to Exit");
                     }
                 }
             }
@@ -82,5 +106,11 @@ public class LevelChanger : MonoBehaviour
     public void ResetPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    private void resetBools()
+    {
+        bossDefeated = false;
+        exitFound = false;
     }
 }

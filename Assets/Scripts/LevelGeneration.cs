@@ -35,6 +35,7 @@ public class LevelGeneration : MonoBehaviour
 
     private void Start()
     {
+        
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
         Instantiate(rooms[0], transform.position, Quaternion.identity);
@@ -127,6 +128,7 @@ public class LevelGeneration : MonoBehaviour
                         int randTopRoom = Random.Range(2, 4);
                         //if (randTopRoom == 1)
                         //    randTopRoom = 2;
+                        
                         Instantiate(rooms[randTopRoom], transform.position, Quaternion.identity);
                     }
 
