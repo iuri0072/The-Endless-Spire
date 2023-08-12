@@ -7,6 +7,7 @@ public class LevelGeneration : MonoBehaviour
     public Transform[] startingPositions;
     private Transform playerSpawnLocation;
     public GameObject[] rooms; // index 0 --> LR, index 1 --> LRB, index 2 --> LRT, index 3 --> LRBT
+    public GameObject bossRoom;
     public GameObject player;
     public GameObject mainCamera;
     public GameObject entrance;
@@ -35,12 +36,12 @@ public class LevelGeneration : MonoBehaviour
 
     private void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
         Instantiate(rooms[0], transform.position, Quaternion.identity);
         Instantiate(entrance, transform.position, Quaternion.identity);
-        SpawnPlayer();
+        SpawnPlayer(transform.position);
 
         stopGeneration = false;
         direction = Random.Range(1, 6);
@@ -101,7 +102,6 @@ public class LevelGeneration : MonoBehaviour
 
                 int rand = Random.Range(0, rooms.Length);
                 Instantiate(rooms[rand], transform.position, Quaternion.identity);
-
                 direction = Random.Range(3, 6);
             }
             else
@@ -120,6 +120,7 @@ public class LevelGeneration : MonoBehaviour
                     {
                         roomDetection.GetComponent<RoomType>().RoomDestruction();
                         Instantiate(rooms[3], transform.position, Quaternion.identity);
+                        
                     }
                     else
                     {
@@ -141,15 +142,14 @@ public class LevelGeneration : MonoBehaviour
                 if (rand == 2)
                     rand = 1;
                 Instantiate(rooms[rand], transform.position, Quaternion.identity);
-
+                
                 direction = Random.Range(1, 6);
             }
             else //stop generation
             {
-                //Instantiate(door, transform.position, Quaternion.identity);
-                //Instantiate(boss, transform.position, Quaternion.identity);
-                Instantiate(exit, transform.position, Quaternion.identity);
-                //SpawnPlayer();
+                Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1, room);
+                roomDetection.GetComponent<RoomType>().RoomDestruction();
+                Instantiate(bossRoom, transform.position, Quaternion.identity);
                 stopGeneration = true;
                 //Debug.Log("All rooms generated");
             }
@@ -190,10 +190,11 @@ public class LevelGeneration : MonoBehaviour
         }
     }
 
-    private void SpawnPlayer()
+    private void SpawnPlayer(Vector3 startingPos)
     {
         print("SpawnPlayer activated");
-        player = (GameObject)Instantiate(player, transform.position, Quaternion.identity);
+        //player = (GameObject)Instantiate(player, transform.position, Quaternion.identity);
+        player.transform.position = startingPos;
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         gameManager.GetComponent<UIManagement>().FindPlayer();
         mainCamera.GetComponent<CameraControl>().FindPlayer();
